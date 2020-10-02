@@ -38,7 +38,7 @@ const contatos = useSelector(estado => estado.contatos.contatos);
 
 ListaContatoTela.navigationOptions = dadosNavegacao => {
     return {
-      headerTitle: "Lista de lugares",
+      headerTitle: "Lista de Contatos",
       headerRight: () =>{
         return (
           <HeaderButtons
