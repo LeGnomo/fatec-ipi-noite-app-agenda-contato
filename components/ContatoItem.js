@@ -8,6 +8,15 @@ import {
 
 import Cores from '../constantes/Cores';
 
+const deletarContato = (indice) => {
+    setContatos(contatos => {
+      setContadorContatos(contadorContatos - 2)
+      return contatos.filter(contato =>  contato.key !== indice);
+    })
+
+  }
+
+
 const ContatoItem = (props) => {
     return (
             <TouchableOpacity onLongPress={props.onDelete} style={estilos.contatoItem}>
@@ -16,6 +25,7 @@ const ContatoItem = (props) => {
                     source={{uri: props.imagem}}
                 />
                 <View style={estilos.tela}>
+                    <Text>Id : {props.index}</Text>
                     <Text style={estilos.nomeNaListaView}>Nome : {props.nome}</Text>
                     <Text style={estilos.telefoneNaListaView}>Telefone: {props.telefone}</Text>
                 </View>

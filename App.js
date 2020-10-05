@@ -9,6 +9,25 @@ import {
   applyMiddleware 
 } from 'redux';
 import reduxThunk from 'redux-thunk';
+import { buscarListaContato, deletarListarContato, dropTableContato, init } from './helpers/db';
+
+
+init()
+.then(()=>{
+  console.log("Worked!!!")
+}).catch((err)=>{
+  console.log(`Não deu certo: ${err}`);
+});
+
+// buscarListaContato().then((dados)=>{
+//   console.log(dados);
+// }).catch((err)=>{
+//   console.log(`${err}`);
+// });
+
+// deletarListarContato();
+
+// dropTableContato();
 
 const rootReducer = combineReducers({
   contatos: contatosReducers,
@@ -18,23 +37,14 @@ const store = createStore (rootReducer, applyMiddleware(reduxThunk));
 
 export default function App() {
 
-  const deletarContato = (indice) => {
-    setContatos(contatos => {
-      setContadorContatos(contadorContatos - 2)
-      return contatos.filter(contato =>  contato.key !== indice);
-    })
+  // const deletarContato = (indice) => {
+  //   setContatos(contatos => {
+  //     setContadorContatos(contadorContatos - 2)
+  //     return contatos.filter(contato =>  contato.key !== indice);
+  //   })
 
-  }
-
-
-  // const adicionarContato = (contato) => {
-  //   if (contato !== undefined && contato.nome !== '' && contato.telefone !== '') {
-  //     setContatos(() => {
-  //       setContadorContatos(contadorContatos + 2)
-  //       return [...contatos, { value: contato, key: contadorContatos.toString() }]
-  //     })
-  //   }
   // }
+
 
   return (
     <Provider store={store} style={estilos.mainView}>

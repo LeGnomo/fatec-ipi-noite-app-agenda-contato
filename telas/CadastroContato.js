@@ -38,7 +38,7 @@ const CadastroContato = (props) => {
     }
 
     return (
-        <ScrollView style={estilos.main}>
+        <ScrollView>
             <View style={estilos.form}>
                 <Text style={estilos.titulo}>Adicionar Contato</Text>
                     <TextInput 
@@ -87,17 +87,6 @@ const estilos = StyleSheet.create ({
     marginBottom: 4,
     padding: 12,
     },
-    main :{
-      left : "20%",
-      top : "10%",
-      width : "60%",
-      height : 300,
-      borderRadius : 20,
-      borderStyle : "solid",
-      borderWidth :1.5,
-      paddingBottom:15,
-      marginBottom: 20
-    }
 });
 
 export default CadastroContato;

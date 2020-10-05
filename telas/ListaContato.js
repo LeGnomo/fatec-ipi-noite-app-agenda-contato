@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {View,Text,StyleSheet,Platform,FlatList} from 'react-native';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import BotaoCabecalho from '../components/BotaoCabecalho'
 import ContatoItem from '../components/ContatoItem'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as contatoActions from '../store/contatos-actions'
 
 
 const deletarContato = (indice) => {
@@ -16,6 +17,10 @@ const deletarContato = (indice) => {
 
 
 const ListaContatoTela = (props) => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(contatoActions.listarContatos())
+  });
 const contatos = useSelector(estado => estado.contatos.contatos);
     return (
       <FlatList
@@ -27,7 +32,7 @@ const contatos = useSelector(estado => estado.contatos.contatos);
             index={contatos.item.id}
             telefone={contatos.item.telefone}
             nome={contatos.item.nome}
-            onDeletarContato={deletarContato}
+            onDelete={deletarContato}
             imagem={contatos.item.imagemURI}
           />
          )}
