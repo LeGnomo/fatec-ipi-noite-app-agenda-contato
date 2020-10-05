@@ -7,7 +7,7 @@ export const init = () =>{
     const promise = new Promise((resolve,reject) =>{
         db.transaction ((tx)=>{
             tx.executeSql(
-                'CREATE TABLE IF NOT EXISTS tb_contato (id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL,imagem TEXT NOT NULL, telefone INTERGER NOT NULL)',
+                'CREATE TABLE IF NOT EXISTS tb_contato (id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL,imagemURI TEXT NOT NULL, telefone INTERGER NOT NULL)',
                 [],
                 () => {resolve()},
                 (_,err) => {reject(err)}
@@ -22,7 +22,7 @@ export const insertContato = (nome,telefone,imagemURI) =>{
     const promise = new Promise((resolve,reject)=>{
         db.transaction((tx)=>{
             tx.executeSql(
-            'INSERT INTO tb_contato (nome,imagem,telefone) VALUES (?,?,?)',
+            'INSERT INTO tb_contato (nome,imagemURI,telefone) VALUES (?,?,?)',
             [nome,imagemURI,telefone],
             (_,resultado) => {resolve(resultado)},
             (_,err) => {reject(err)}

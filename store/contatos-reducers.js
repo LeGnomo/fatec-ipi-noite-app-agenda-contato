@@ -21,7 +21,7 @@ export default (estado = estadoInicial, action) => {
             // console.log(action.contatos);
             
             return{
-                contatos : action.contatos.map((contato) => new Contato(contato.id.toString(),contato.nome,contato.telefone,contato.imagem))
+                contatos : action.contatos.map((contato) => new Contato(contato.id.toString(),contato.nome,contato.telefone,contato.imagemURI))
             }
         default:
         return estado;

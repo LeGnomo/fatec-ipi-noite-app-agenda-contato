@@ -27,7 +27,7 @@ export const addContato = (nome,telefone,imagemURI) => {
                 to : novoPath
             });
 
-            const resultDB = await insertContato(nome,telefone,imagemURI);
+            const resultDB = await insertContato(nome,telefone,novoPath);
             console.log(resultDB);
             dispatch({type : ADD_CONTATO,dadosContato :{id:resultDB.insertId,nome : nome,telefone:telefone,imagemURI:novoPath}});
         }
