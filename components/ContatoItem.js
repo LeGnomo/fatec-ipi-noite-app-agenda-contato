@@ -28,6 +28,10 @@ const ContatoItem = (props) => {
                     <Text>Id : {props.index}</Text>
                     <Text style={estilos.nomeNaListaView}>Nome : {props.nome}</Text>
                     <Text style={estilos.telefoneNaListaView}>Telefone: {props.telefone}</Text>
+                    <Text >Latitude: {props.lat}</Text>
+                    <Text >Longitude: {props.lng}</Text>
+                    <Text >Data: {props.data}</Text>
+
                 </View>
             </TouchableOpacity>
     );

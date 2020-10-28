@@ -12,6 +12,7 @@ import * as contatosActions from '../store/contatos-actions';
 import Cores from '../constantes/Cores';
 import TiraFoto from '../components/TiraFoto';
 import { set } from 'react-native-reanimated';
+import CapturaLocalizacao from '../components/capturaLocalicazao';
 
 const CadastroContato = (props) => {
     const dispatch = useDispatch();
@@ -19,13 +20,16 @@ const CadastroContato = (props) => {
     const [nome, setNome] = useState ('');
     const [telefone, setTelefone] = useState ('');
     const [imagemURI, setImagemURI] = useState();
+    const [localizacao,setLocalizacao] = useState();
 
     const fotoTirada = imagemURI => {
         setImagemURI(imagemURI);
     }
 
     const adicionarContato = () => {
-        dispatch(contatosActions.addContato(nome, telefone, imagemURI));
+        var data = new Date();
+        console.log(data);
+        dispatch(contatosActions.addContato(nome, telefone, imagemURI,localizacao.lng,localizacao.lat,data));
         props.navigation.goBack();
     }
 
@@ -36,6 +40,12 @@ const CadastroContato = (props) => {
     const capturarTelefone = (telefone) => {
     setTelefone(telefone);
     }
+
+    const getLocalizacao = localizacao =>{
+        setLocalizacao(localizacao);
+    }
+
+    
 
     return (
         <ScrollView>
@@ -54,6 +64,7 @@ const CadastroContato = (props) => {
                         value={telefone}
                     />
                     <TiraFoto onFotoTirada={fotoTirada}/>
+                    <CapturaLocalizacao onLocalizacaoCapturada={getLocalizacao}/>
                     <Button
                         title="Adicionar Contato"
                         color={Cores.primary}

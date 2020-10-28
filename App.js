@@ -9,7 +9,7 @@ import {
   applyMiddleware 
 } from 'redux';
 import reduxThunk from 'redux-thunk';
-import { buscarListaContato, deletarListarContato, dropTableContato, init } from './helpers/db';
+import { buscarListaContato, deletarListarContato, dropTableContato, init,insertContato } from './helpers/db';
 
 
 init()
@@ -19,15 +19,17 @@ init()
   console.log(`Não deu certo: ${err}`);
 });
 
-// buscarListaContato().then((dados)=>{
-//   console.log(dados);
-// }).catch((err)=>{
-//   console.log(`${err}`);
-// });
+buscarListaContato().then((dados)=>{
+  console.log(dados);
+}).catch((err)=>{
+  console.log(`${err}`);
+});
 
 // deletarListarContato();
 
 // dropTableContato();
+
+// insertContato('a','b','c','d','4','6','7');
 
 const rootReducer = combineReducers({
   contatos: contatosReducers,
